@@ -1,0 +1,16 @@
+%h1
+  Prompts
+%p
+  =link_to 'New Prompt', new_admin_prompt_path
+-if @prompts.empty?
+  No prompts yet
+-else
+  %table
+    -@prompts.each do |prompt|
+      %tr{:bgcolor=>cycle('#ffffff','#dddddd')}
+        %td
+          =prompt.title
+        %td
+          =link_to 'edit', edit_admin_prompt_path(prompt)
+        %td
+          =link_to 'destroy', admin_prompt_path(prompt), :method=>:delete, :confirm=>'Are you sure?'

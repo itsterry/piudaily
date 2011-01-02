@@ -1,0 +1,9 @@
+=simple_form_for [:admin,@prompt], :html=>{:multipart=>true} do |f|
+  =f.input :title
+  -unless @prompt.assets.empty?
+    -@prompt.assets.each do |asset|
+      %div{:style=>'float: left'}
+        =image_tag(asset.attachment.thumb.max100.url)
+    %div{:style=>'clear:both'}
+  =f.input :attachment, :as=>:file
+  =f.button :submit
